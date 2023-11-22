@@ -1,0 +1,13 @@
+.dark-mode {
+    background-color: #172935;
+    color: white;
+}
+
+.moon{
+    position: relative;
+    width: 20px;
+    height: 20px;
+    background-color: transparent;
+    border-radius: 50%;
+    box-shadow: 5px 1px 0px 0px #292927;
+}

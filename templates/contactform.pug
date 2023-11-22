@@ -1,0 +1,64 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')  
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')   
+    link(rel='stylesheet', type='text/css', href='/css/main.css')    
+    link(rel='stylesheet', type='text/css', href='/css/main.dark.css')   
+    title Contact Form
+  body
+    include navbar.pug
+    h1 Schedule an Info Session
+    |     
+    form(action='/contact', method='POST')
+      div
+        label(for='name') Name:
+        |             
+        input#name(type='text', name='name', required='')
+      |         
+      div
+        label(for='email') Email:
+        |             
+        input#email(type='email', name='email', required='')
+      |         
+      div
+        label(for='scholarship') Select a topic:
+        |             
+        select#scholarship(name='scholarship')
+          option(value='0') --
+          |                 
+          option(value='20000') Tuition Fees
+          |                 
+          option(value='10000') Housing
+          |                 
+          option(value='5000') Health Insurance
+          |                 
+          option(value='2000') Technologies
+          |                 
+          option(value='1000') Textbooks
+          |                 
+          option(value='3000') Meal Plans
+          |                 
+          option(value='700') Transportation
+      |         
+      div
+        label(for='date') Preferred date:
+        |             
+        input#date(type='date', name='date')
+      |         
+      div
+        label(for='subscribe') Subscribe to our newsletter for an extra 10%?
+        |             
+        input#subscribe(type='checkbox', name='subscribe', value='Yes')
+      |         
+      div
+        p
+          | Possible Grant Amount: $
+          span#priceLabel
+      |         
+      div
+        input(type='submit', value='Confirm')
+    |     
+    script(src='/js/main.js')
+    |     
+    script(src='/js/contact.js')

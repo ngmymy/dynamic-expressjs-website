@@ -1,0 +1,82 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', type='text/css', href='/css/main.css')
+    link(rel='stylesheet', type='text/css', href='/css/main.dark.css')
+    title Testimonies
+  |     
+  body
+    script(src='/js/admin-sale.js')      
+    include navbar.pug
+    |         
+    .admin-sale-form
+      label.admin-banner Set Sale Banner: 
+      |             
+      input#sale-message-input(type='text', placeholder='Enter message', maxlength='110')
+      |             
+      button#set-sale-button Set
+      |             
+      button#delete-sale-button Delete
+    |         
+    h1 Appointments Log
+    |             
+    table#contacts_table
+      tbody
+        tr
+          th Name
+          |                     
+          th Email
+          |                     
+          th Topic
+          |                     
+          th Date
+          |                     
+          th Time until Appointment
+          |                     
+          th Subscribed
+          |                     
+          th Delete Row
+        |  
+      each appt in contacts
+        tr(id=appt.id)
+          each attr in Object.keys(appt)
+            if attr === 'email'
+              td
+                a(href='mailto:#{appt.email}') #{appt[attr]}
+            else if attr === 'scholarship'
+              td
+                case appt.scholarship
+                  when '20000'
+                    | Tuition Fees
+                  when '10000'
+                    | Housing
+                  when '5000'
+                    | Health Insurance
+                  when '2000'
+                    | Technologies
+                  when '1000'
+                    | Textbooks
+                  when '3000'
+                    | Meal Plans
+                  when '700'
+                    | Transportation
+            else if attr === 'date'
+              td.date-cell= appt[attr]
+            else if attr === 'name'
+              td= appt[attr]
+          td#time-until-cell
+          |
+          if appt.subscribe === 'Yes'
+            td Yes
+          else
+            td No
+          |
+          td
+            input(type='button', value='Delete', id='deleteBtn', onclick='deleteRow(this)')
+          |
+    |         
+    script(src='/js/main.js')
+    |         
+    script(src='/js/table.js')
